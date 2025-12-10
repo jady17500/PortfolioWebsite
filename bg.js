@@ -55,8 +55,8 @@ function canvasSize() {
   canvas.width = rect.width * window.devicePixelRatio;
   canvas.height = rect.height * window.devicePixelRatio;
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  canvas.style.width = rect.width + 'px';
-  canvas.style.height = rect.height + 'px';
+  //canvas.style.width = rect.width + 'px';
+  //canvas.style.height = rect.height + 'px';
   cols = Math.floor(canvas.width / res) + 1;
   rows = Math.floor(canvas.height / res) + 1;
   
@@ -140,10 +140,10 @@ function renderAtThreshold() {
   const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
   const grad = ctx.createLinearGradient(0, 0, 0, rect.height);
 
-
-  grad.addColorStop(0, "#ff0000");
-  grad.addColorStop(0.35, "#d88416ff"); 
-  grad.addColorStop(1, "#380bbfff");
+  "FF4517"
+  grad.addColorStop(0, "#edd500ff");
+  grad.addColorStop(0.50 ,"#FF006F");
+  grad.addColorStop(1, "#1723ccff");
 
   ctx.strokeStyle = grad;
 
