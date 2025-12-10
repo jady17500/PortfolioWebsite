@@ -8,11 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-    <canvas id="res-canvas"></canvas>
-
+    <nav>
+    <div class="logo">Cazzo Palle</div>
+    <ul class="nav-links">
+      <li><a href="">Home</a></li>
+      <li><a href="">About Me</a></li>
+      <li><a href="">Projects</a></li>
+      <li><a href="">Contact</a></li>
+      <li><a href="">Resume</a></li>
+    </ul>
+    <div class="btns">
+      <button class="btn" id="Git"><img src="Media/Git.png" class="btnImage"/></button>
+      <button class="btn" id="Linkedin"><img src="Media/Linkedin.png" class="btnImage"/></button>
+      <button class="btn" id="Itch"><img src="Media/Itch.png" class="btnImage"/></button>
+    </div>
+  </nav>
+    <div class="bg-container">
+        <canvas id="res-canvas"></canvas>
+    </div>
     <div class="fps-container">
     <p id="fps-count"></p>
     </div>
+    <script type="module" src="main.js"></script>
     <script type="module" src="bg.js"></script>
 </body>
 </html>

@@ -3,11 +3,10 @@ import { noise } from "https://jspm.dev/@chriscourses/perlin-noise";
 //Editable values
 let showFPS = true;
 let MAX_FPS = 0; // 0 = uncapped
-let thresholdIncrement = 5; //cells range from 0-100, draw line for every step of this increment
+let thresholdIncrement = 4; //cells range from 0-100, draw line for every step of this increment
 let thickLineThresholdMultiple = 3; //every x steps draw a thicker line
 let res = 9; //divide canvas width/height by this, lower number means more cells to calculate/draw lines for
 let baseZOffset = 0.0002; //how quickly the noise should move
-let lineColor = '#ff000080';
 //----
 
 let canvas;
@@ -56,8 +55,8 @@ function canvasSize() {
   canvas.width = rect.width * window.devicePixelRatio;
   canvas.height = rect.height * window.devicePixelRatio;
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  canvas.style.width = rect.width + 'px';
-  canvas.style.height = rect.height + 'px';
+  //canvas.style.width = '1 vh';
+  //canvas.style.height =  '1 vh';
   cols = Math.floor(canvas.width / res) + 1;
   rows = Math.floor(canvas.height / res) + 1;
   
@@ -105,8 +104,8 @@ function mouseOffset() {
   let x = Math.floor(mousePos.x / res);
   let y = Math.floor(mousePos.y / res);
   if (inputValues[y] === undefined || inputValues[y][x] === undefined) return;
-  const incrementValue = 0.005; // The value to increment by
-  const radius = 10; // Control the size of the circle
+  const incrementValue = 0.0055; // The value to increment by
+  const radius = 12; // Control the size of the circle
   for (let i = -radius; i <= radius; i++) {
     for (let j = -radius; j <= radius; j++) {
       // Calculate the distance from the center (x, y) to the current cell
@@ -138,13 +137,13 @@ function generateNoise() {
 
 function renderAtThreshold() {
   ctx.beginPath();
-
-  const grad = ctx.createLinearGradient(0, 0, 0, canvas.height/2);
+  const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
+  const grad = ctx.createLinearGradient(0, 0, 0, rect.height);
 
 
   grad.addColorStop(0, "#ff0000");
-  grad.addColorStop(0.6, "#fca431ff"); 
-  grad.addColorStop(1, "#4b05fdff");
+  grad.addColorStop(0.5, "#d88416ff"); 
+  grad.addColorStop(1, "#380bbfff");
 
   ctx.strokeStyle = grad;
 

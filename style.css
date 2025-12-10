@@ -5,22 +5,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-.fps-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.4rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  
-  > p {
-    all: unset;
-    font-weight: bold;
-    font-family: 'Nunito', sans-serif;
-  }
-  z-index: 30;
-}
-
 
 .bg-container{
     width: 100%;
