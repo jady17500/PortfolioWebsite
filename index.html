@@ -1,122 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible", content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 <body>
-  <nav>
-    <div class="logo">Cazzo Palle</div>
+    <nav>
+    <div class="logo">Marco Piamonte</div>
     <ul class="nav-links">
-      <li><a href="">Home</a></li>
+      <li><a href="index2.html">Home</a></li>
       <li><a href="">About Me</a></li>
       <li><a href="">Projects</a></li>
       <li><a href="">Contact</a></li>
-      <li><a href="">Resume</a></li>
+      <li><a href="resume.html">Resume</a></li>
     </ul>
     <div class="btns">
-      <button class="btn" id="Git"><img src="Media/Unity.png" class="btnImage"/></button>
+      <button class="btn" id="Git"><img src="Media/Git.png" class="btnImage"/></button>
       <button class="btn" id="Linkedin"><img src="Media/Linkedin.png" class="btnImage"/></button>
       <button class="btn" id="Itch"><img src="Media/Itch.png" class="btnImage"/></button>
     </div>
   </nav>
     <div class="bg-container">
-      <video autoplay loop muted plays-inline class="background-clip">
-        <source src="Media/Noise2.mp4" type="video/mp4">
-      </video>
-        <div class="card-grid">
-          <div class="card">
-            <div class="wrapper">
-             <div class="banner-image"> </div>
-             <h1 class="card-title"> Sborra Pisello</h1>
-             <p>Lorem ipsum dolor sit amet, <br/>
-               consectetur adipiscing elit.</p>
-            </div>
-            <div class="button-wrapper"> 
-              <button class="btn fill">Details</button>
-            </div>
-          </div>
-          
-          <div class="card">
-        <div class="wrapper">
-          <div class="banner-image"> </div>
-          <h1 class="card-title"> Sborra Pisello</h1>
-          <p>Lorem ipsum dolor sit amet, <br/>
-            consectetur adipiscing elit.</p>
+        <canvas id="res-canvas"></canvas>
+        <div class="hero-card-container">
+            <div class="hero-card">
+                <div class="hero-card__content"> 
+                  <h1>Marco Piamonte</h1>
+                  <h2>Gameplay Programmer</h2>
+                  <p>📍Malmö, Sweden</p>
+                  <div class="skills-images-container">
+                    <img src="Media/Unreal.png" alt="" class="skill-image">
+                    <img src="Media/Unity.png" alt="" class="skill-image" id="Unity">
+                    <img src="Media/C++.svg" alt="" class="skill-image">
+                    <img src="Media/CSharp.png" alt="" class="skill-image">
+                    <img src="Media/Git_icon.png" alt="" class="skill-image">
+                    <img src="Media/Subversion.png" alt="" class="skill-image">
+                    <img src="Media/perforce.jpg" alt="" class="skill-image">
+                    <img src="Media/Rider.png" alt="" class="skill-image">
+                  </div>
+                </div>
+            </div>   
+            
         </div>
-        <div class="button-wrapper"> 
-          <button class="btn fill">Details</button>
-        </div>
-          </div>
-          <div class="card">
-        <div class="wrapper">
-          <div class="banner-image"> </div>
-          <h1 class="card-title"> Sborra Pisello</h1>
-          <p>Lorem ipsum dolor sit amet, <br/>
-            consectetur adipiscing elit.</p>
-        </div>
-        <div class="button-wrapper"> 
-          <button class="btn fill">Details</button>
-        </div>
-          </div>
-    
-          <div class="card">
-        <div class="wrapper">
-          <div class="banner-image"> </div>
-          <h1 class="card-title"> Sborra Pisello</h1>
-          <p>Lorem ipsum dolor sit amet, <br/>
-            consectetur adipiscing elit.</p>
-        </div>
-        <div class="button-wrapper"> 
-          <button class="btn fill">Details</button>
-        </div>
-          </div>
-    
-          <div class="card">
-        <div class="wrapper">
-          <div class="banner-image"> </div>
-          <h1 class="card-title"> Sborra Pisello</h1>
-          <p>Lorem ipsum dolor sit amet, <br/>
-            consectetur adipiscing elit.</p>
-        </div>
-        <div class="button-wrapper"> 
-          <button class="btn fill">Details</button>
-        </div>
-          </div>
-
-          <div class="card">
-        <div class="wrapper">
-          <div class="banner-image"> </div>
-          <h1 class="card-title"> Sborra Pisello</h1>
-          <p>Lorem ipsum dolor sit amet, <br/>
-            consectetur adipiscing elit.</p>
-        </div>
-        <div class="button-wrapper"> 
-          <button class="btn fill">Details</button>
-        </div>
-          </div>
-
-           <div class="card">
-        <div class="wrapper">
-          <div class="banner-image"> </div>
-          <h1 class="card-title"> Sborra Pisello</h1>
-          <p>Lorem ipsum dolor sit amet, <br/>
-            consectetur adipiscing elit.</p>
-        </div>
-        <div class="button-wrapper"> 
-          <button class="btn fill">Details</button>
-        </div>
-          </div>
-
-        </div>
-    </div>
-
-
  
-  <script type="module" src="main.js"></script>
-  <script type="module" src="bg.ts"></script>
+    </div>
+    <div class="fps-container">
+    <p id="fps-count"></p>
+    </div>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="bg.js"></script>
 </body>
 </html>
