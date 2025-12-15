@@ -38,7 +38,7 @@ html, body {
   z-index: -1;
   justify-content: center;
   display: flex;
-  
+
 }
 
 nav{
@@ -113,14 +113,16 @@ nav{
 
 
 .hero-card {
-  width: 50vw;
+  width: 36vw;
   height: 254px;
   border-radius: 20px;
-  padding: 5px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   background-image: "#fff700";
-  
-  
+  transition: all 0.2s;
+}
+
+.hero-card:hover{
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px 5px #1723ccff;
 }
 
 .hero-card__content {
@@ -172,4 +174,56 @@ nav{
 
 .skill-image:hover{
   scale: 1.05;
+}
+
+
+
+.card {
+ width: 50vw;
+ height: 45vh;
+  background: linear-gradient(90deg, rgba(36, 36, 36, 1), rgba(36, 36, 36, 0.4));
+ transition: all .3s;
+ border-radius: 10px;
+}
+
+.card:hover {
+ transform: scale(1.05);
+ box-shadow: 0px 0px 10px 5px #1723ccff;
+ border-radius: 20px;
+}
+
+
+.about-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  top: 60%;
+}
+
+
+.card-title{
+  text-align: center; 
+  color: #1723ccff;
+  padding-top: 10px;
+}
+
+.content-container{
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic{
+  height: 200px;
+  width: 200px;
+  margin-left: 10%;
+  margin-top: 8%;
+  margin-right: 10%;
+}
+
+.bio{
+   font-size: 2rem;
+   color: rgb(90, 99, 220);
+   margin-top: 30px;
 }

@@ -55,8 +55,8 @@ function canvasSize() {
   canvas.width = rect.width * window.devicePixelRatio;
   canvas.height = rect.height * window.devicePixelRatio;
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  //canvas.style.width = rect.width + 'px';
-  //canvas.style.height = rect.height + 'px';
+  canvas.style.width = rect.width + 'px';
+  canvas.style.height = rect.height + 'px';
   cols = Math.floor(canvas.width / res) + 1;
   rows = Math.floor(canvas.height / res) + 1;
   
