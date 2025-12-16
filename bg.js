@@ -29,6 +29,14 @@ let mouseDown = true; //WIP
 setupCanvas();
 animate();
 
+
+window.addEventListener('resize', canvasSize);
+document.addEventListener('fullscreenchange', () => {
+  // piccolo delay per permettere al browser di stabilizzarsi
+  setTimeout(canvasSize, 100);
+});
+
+
 function setupCanvas() {
   let canvasElement = document.getElementById('res-canvas');
   let canvasCtx = canvasElement.getContext('2d');
@@ -51,22 +59,29 @@ function setupCanvas() {
 }
 
 function canvasSize() {
-  const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
-  canvas.width = rect.width * window.devicePixelRatio;
-  canvas.height = rect.height * window.devicePixelRatio;
-  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  canvas.style.width = rect.width + 'px';
-  canvas.style.height = rect.height + 'px';
+  const parent = canvas.parentElement;
+  const rect = parent ? parent.getBoundingClientRect() : canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+
+  const docHeight = getDocumentHeight();
+
+  // buffer reale
+  canvas.width  = rect.width * dpr;
+  canvas.height = docHeight * dpr;
+
+  // reset trasformazioni (evita accumulo)
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  // dimensione visiva
+  canvas.style.width  = rect.width + 'px';
+  canvas.style.height = docHeight + 'px';
+
   cols = Math.floor(canvas.width / res) + 1;
   rows = Math.floor(canvas.height / res) + 1;
-  
-  //initilize zBoostValues
-  for (let y = 0; y < rows; y++) {
-    zBoostValues[y] = [];
-    for (let x = 0; x <= cols; x++) {
-      zBoostValues[y][x] = 0;
-    }
-  }
+
+  zBoostValues = Array.from({ length: rows }, () =>
+    Array(cols).fill(0)
+  );
 }
 
 function animate() {
@@ -280,4 +295,17 @@ function linInterpolate(x0, x1, y0 = 0, y1 = 1) {
 function binaryToType(nw, ne, se, sw) {
   let a = [nw, ne, se, sw];
   return a.reduce((res, x) => (res << 1) | x);
+}
+
+function getDocumentHeight() {
+  const body = document.body;
+  const html = document.documentElement;
+
+  return Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
 }
