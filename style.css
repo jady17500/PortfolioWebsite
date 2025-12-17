@@ -1,5 +1,6 @@
 html, body {
   border: none;
+  scroll-behavior: smooth;
   box-sizing: border-box;
   background-color: #000;
 }
