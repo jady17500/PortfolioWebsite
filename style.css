@@ -269,7 +269,7 @@ nav{
   align-items: center;
   flex-direction: column;
   width: 20vw;
-  height: 40vh;
+  height: 43vh;
 }
 
 .project-image{
@@ -282,9 +282,20 @@ nav{
 
 #project-card p{
   color: rgb(106, 114, 230);
-  font-size: 1.4rem;
+  text-align: center;
+  font-size: 1rem;
 }
 
 #project-card button{
-  margin-top: 15px;
+  position: relative;
+  margin-top: 10%;
+}
+
+#text-card{
+  width: fit-content;
+  height: fit-content;
+}
+
+#text-card h1{
+  padding: 20px;
 }
