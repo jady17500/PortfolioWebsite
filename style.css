@@ -116,6 +116,8 @@ nav{
 
 
 .hero-card {
+  min-width: fit-content;
+  min-height: fit-content;
   width: 36vw;
   height: 254px;
   border-radius: 20px;
@@ -184,14 +186,14 @@ nav{
 .card {
  width: 50vw;
  height: 45vh;
-  background: linear-gradient(90deg, rgba(36, 36, 36, 1), rgba(36, 36, 36, 0.4));
+ background: linear-gradient(90deg, rgba(36, 36, 36, 1), rgba(36, 36, 36, 0.4));
  transition: all .3s;
  border-radius: 10px;
 }
 
 .card:hover {
  transform: scale(1.05);
- box-shadow: 0px 0px 10px 5px #1723ccff;
+ box-shadow: 0px 0px 20px 5px #1723ccff;
  border-radius: 20px;
 }
 
@@ -223,12 +225,14 @@ nav{
   margin-left: 10%;
   margin-top: 8%;
   margin-right: 10%;
+  border-radius: 100px;
 }
 
 .bio{
-   font-size: 2rem;
+   font-size: 1.5vw;
    color: rgb(90, 99, 220);
    margin-top: 30px;
+   margin-left: 5px;
 }
 
 .projects-container{
@@ -254,6 +258,7 @@ nav{
 .projects-container h1{
   color: #1723ccff;
   margin-bottom: 5px;
+  font-size: 1.6rem;
 }
 
 .projects-container h2{
@@ -273,8 +278,8 @@ nav{
 }
 
 .project-image{
-  width: 340px;
-  height: 220px;
+  width: 18vw;
+  height: 20vh;
   border-radius: 10px;
   margin-top: 20px;
   margin-bottom: 15px;
@@ -283,7 +288,7 @@ nav{
 #project-card p{
   color: rgb(106, 114, 230);
   text-align: center;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 #project-card button{
@@ -298,4 +303,35 @@ nav{
 
 #text-card h1{
   padding: 20px;
+}
+
+.contact-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    top: 230%;
+}
+
+.contact-container h1{
+    color: #1723ccff;
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+}
+
+.contact-container form{
+  margin-top: 20px;
+}
+
+.contact-container label{
+  color: #1723ccff;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-container .card{
+  width: 36vw;
+  height: 3rem;
+  border-color: rgba(0, 0, 0, 0);
 }
