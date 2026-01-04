@@ -293,7 +293,7 @@ nav{
 
 #project-card button{
   position: relative;
-  margin-top: 10%;
+  
 }
 
 #text-card{
@@ -334,4 +334,16 @@ nav{
   width: 36vw;
   height: 3rem;
   border-color: rgba(0, 0, 0, 0);
+}
+
+.project-data{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.project-footer{
+  height: 10%;
 }
