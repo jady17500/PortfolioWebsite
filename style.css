@@ -280,8 +280,8 @@ nav{
 .project-image{
   width: 18vw;
   height: 20vh;
-  border-radius: 10px;
-  margin-top: 20px;
+  border-radius: 15px;
+  margin-top: 10px;
   margin-bottom: 15px;
 }
 
@@ -338,20 +338,30 @@ nav{
   border-color: rgba(0, 0, 0, 0);
 }
 
+
+
+.contact-container #femail{
+  font-size: 1.6rem;
+}
+
+.contact-container #fsubject{
+  font-size: 1.6rem;
+}
+
 .contact-container #fmessage{
   height: 10rem;
   resize: none;
+  font-size: 1rem;
   padding: 10px;
 
 }
 .project-data{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 90%;
+  height: 85%;
 }
 
 .project-footer{
-  height: 10%;
+  height: 15%;
 }

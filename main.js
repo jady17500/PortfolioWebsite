@@ -15,3 +15,13 @@ const itch = document.getElementById("Itch")
 itch.addEventListener("click", () =>{
     window.open("https://jady1750.itch.io/")
 })
+
+const Email = document.getElementById("femail")
+const Subject = document.getElementById("fsubject")
+const Message = document.getElementById("fmessage")
+
+const FormSubmit = document.getElementById("submit")
+FormSubmit.addEventListener("click", () =>{
+    window.open(`mailto:marco.piamonte04@gmail.com?subject=${Subject.value}&body=${Message.value}`);
+
+})
