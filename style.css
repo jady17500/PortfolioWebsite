@@ -332,6 +332,14 @@ nav{
 
 .contact-container .card{
   width: 36vw;
+  padding-left: 10px;
   height: 3rem;
+  color: rgb(106, 114, 230);
   border-color: rgba(0, 0, 0, 0);
+}
+
+.contact-container #fmessage{
+  height: 10rem;
+  resize: none;
+  padding: 10px;
 }
