@@ -395,3 +395,41 @@ nav{
   text-decoration: none;
   color: #000;
 }
+
+.project-container{
+  display: flex;
+  color:#1723ccff ;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+}
+
+.trailer-container{
+  margin-top: 30px;
+  margin-left: 30px;
+  display: flex;
+  justify-content: left;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.trailer-container #video-card{
+  width: 45vw;
+  height: 70vh;
+}
+
+.video-container{
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.trailer{
+  width: 90%;
+  height: 90%;
+}
