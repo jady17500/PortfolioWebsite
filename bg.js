@@ -5,7 +5,7 @@ let showFPS = true;
 let MAX_FPS = 0; // 0 = uncapped
 let thresholdIncrement = 4; //cells range from 0-100, draw line for every step of this increment
 let thickLineThresholdMultiple = 3; //every x steps draw a thicker line
-let res = 11; //divide canvas width/height by this, lower number means more cells to calculate/draw lines for
+let res = 12; //divide canvas width/height by this, lower number means more cells to calculate/draw lines for
 let baseZOffset = 0.0002; //how quickly the noise should move
 //----
 
