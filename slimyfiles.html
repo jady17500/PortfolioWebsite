@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio-Slimy Files</title>
+</head>
+<body>
+   <script>
+  function redirect() {
+   window.open("https://futuregames.itch.io/gunsmoke-grimoires")
+ }
+ </script>
+    <nav>
+    <div class="logo">Marco Piamonte</div>
+    <ul class="nav-links">
+      <li><a href="index.html#hero">Home</a></li>
+      <li><a href="index.html#about">About Me</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#contact-container">Contact</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+    <div class="btns">
+      <button class="btn" id="Git"><img src="Media/Git.png" class="btnImage"/></button>
+      <button class="btn" id="Linkedin"><img src="Media/Linkedin.png" class="btnImage"/></button>
+      <button class="btn" id="Itch"><img src="Media/Itch.png" class="btnImage"/></button>
+    </div>
+  </nav>
+
+    <div class="bg-container" id="hero">
+        <canvas id="res-canvas"></canvas> 
+        <div class="title-container">
+          <div class="card" id="text-card"><h1>Slimy Files</h1></div>
+        </div>
+        <div class="project-container">
+            <div class="trailer-container">
+              <div class="card" id="video-card">
+                <div class="video-container"><h1>Watch trailer</h1>
+                <iframe width="700" height="455" src="https://www.youtube.com/embed/0IyAOWW5z5c?rel=0" title="" frameBorder="0"   
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe>
+              </div>
+              <div class="button-container">
+                
+              </div>
+              </div>
+            </div>
+            <div class="trailer-container">
+              <div class="card" id="video-card">
+                <div class="video-container"><h1>My role in the project</h1>
+                <iframe width="700" height="455" src="https://www.youtube.com/embed/NmCWWRCVwto?rel=0" title="" frameBorder="0"   
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe>
+              </div>
+              <div class="button-container">
+                  <p>I was responsible for the main mechanic of the game (creating platforms on death) and the camera systems, also since it was developed in limited time, I helped in almost every technical aspect of the game
+                </p>
+              </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fps-container">
+    <p id="fps-count"></p>
+    <script type="module" src="main.js" ></script>
+    <script type="module" src="bg.js" ></script>
+</body>
+</html>
