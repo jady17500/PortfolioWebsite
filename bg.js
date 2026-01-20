@@ -11,7 +11,7 @@ let baseZOffset = 0.0002; //how quickly the noise should move
 
 let canvas;
 let ctx;
-let fpsCount = document.getElementById("fps-count");
+//let fpsCount = document.getElementById("fps-count");
 let frameValues = [];
 let inputValues= [];
 
@@ -91,7 +91,7 @@ function animate() {
     const frameDuration = endTime - startTime;
     frameValues.push(Math.round(1000 / frameDuration));
     if (frameValues.length > 60 && showFPS) {
-      fpsCount.innerText = Math.round(frameValues.reduce((a, b) => a + b) / frameValues.length);
+      //fpsCount.innerText = Math.round(frameValues.reduce((a, b) => a + b) / frameValues.length);
       frameValues = [];
     }
     requestAnimationFrame(() => animate());
