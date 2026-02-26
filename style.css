@@ -547,6 +547,39 @@ nav{
     font-size: 1.4rem;
   }
 
+  .bg-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    overflow-x: hidden;
+  }
+
+  #res-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-card-container,
+  .about-container,
+  .projects-container,
+  .contact-container,
+  .resume-container,
+  .project-container,
+  .title-container {
+    position: relative !important;
+    top: auto !important;
+    z-index: 1;
+    width: 100%;
+    padding: 20px 5%;
+  }
+
   /* Hero card */
   .hero-card {
     width: 90vw;
@@ -559,9 +592,8 @@ nav{
   }
 
   .hero-card-container {
-    top: 10%;
-    width: 100%;
-    padding: 0 5%;
+    display: flex;
+    justify-content: center;
   }
 
   .skills-images-container {
@@ -589,9 +621,8 @@ nav{
 
   /* About section */
   .about-container {
-    top: 45%;
-    width: 100%;
-    padding: 0 5%;
+    display: flex;
+    justify-content: center;
   }
 
   .content-container {
@@ -613,9 +644,9 @@ nav{
 
   /* Projects section - one card per row */
   .projects-container {
-    top: 100%;
-    width: 100%;
-    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .projects-grid {
@@ -647,11 +678,12 @@ nav{
     font-size: 0.85rem;
   }
 
-  /* Contact section */
+  /* Contact section - flows naturally below projects */
   .contact-container {
-    top: 200%;
-    width: 100%;
-    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
   }
 
   .contact-container .card {
@@ -671,11 +703,9 @@ nav{
 
   /* Project detail pages */
   .project-container {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    top: 12%;
-    width: 100%;
-    padding: 0 3%;
   }
 
   .trailer-container {
@@ -714,8 +744,8 @@ nav{
   }
 
   .title-container {
-    width: 100%;
-    padding: 0 5%;
+    display: flex;
+    justify-content: center;
   }
 
   #text-card h1 {
@@ -731,9 +761,9 @@ nav{
 
   /* Resume page */
   .resume-container {
-    top: 10%;
-    width: 100%;
-    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 3vh;
   }
 
