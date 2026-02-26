@@ -1,6 +1,3 @@
-console.log(document)
-
-
 const git = document.getElementById("Git")
 git.addEventListener("click", () =>{
     window.open("https://github.com/jady17500")
@@ -16,12 +13,29 @@ itch.addEventListener("click", () =>{
     window.open("https://jady1750.itch.io/")
 })
 
-const Email = document.getElementById("femail")
-const Subject = document.getElementById("fsubject")
-const Message = document.getElementById("fmessage")
+const hamburger = document.querySelector(".hamburger")
+const navLinks = document.querySelector(".nav-links")
+const btns = document.querySelector(".btns")
+
+hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("nav-open")
+    btns.classList.toggle("nav-open")
+    hamburger.classList.toggle("active")
+})
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("nav-open")
+        btns.classList.remove("nav-open")
+        hamburger.classList.remove("active")
+    })
+})
 
 const FormSubmit = document.getElementById("submit")
-FormSubmit.addEventListener("click", () =>{
-    window.open(`mailto:marco.piamonte04@gmail.com?subject=${Subject.value}&body=${Message.value}`);
-
-})
+if (FormSubmit) {
+    const Subject = document.getElementById("fsubject")
+    const Message = document.getElementById("fmessage")
+    FormSubmit.addEventListener("click", () =>{
+        window.open(`mailto:marco.piamonte04@gmail.com?subject=${Subject.value}&body=${Message.value}`);
+    })
+}
