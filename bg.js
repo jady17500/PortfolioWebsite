@@ -7,6 +7,14 @@ let thresholdIncrement = 4; //cells range from 0-100, draw line for every step o
 let thickLineThresholdMultiple = 3; //every x steps draw a thicker line
 let res = 12; //divide canvas width/height by this, lower number means more cells to calculate/draw lines for
 let baseZOffset = 0.0002; //how quickly the noise should move
+
+// Adaptive resolution
+const TARGET_FPS_LOW = 24;
+const TARGET_FPS_HIGH = 40;
+const RES_MIN = 12;
+const RES_MAX = 32;
+const RES_STEP = 2;
+let adaptiveCooldown = 0;
 //----
 
 let canvas;
@@ -90,8 +98,9 @@ function animate() {
     const endTime = performance.now();
     const frameDuration = endTime - startTime;
     frameValues.push(Math.round(1000 / frameDuration));
-    if (frameValues.length > 60 && showFPS) {
-      //fpsCount.innerText = Math.round(frameValues.reduce((a, b) => a + b) / frameValues.length);
+    if (frameValues.length > 60) {
+      const avgFPS = Math.round(frameValues.reduce((a, b) => a + b) / frameValues.length);
+      adjustResolution(avgFPS);
       frameValues = [];
     }
     requestAnimationFrame(() => animate());
@@ -295,6 +304,28 @@ function linInterpolate(x0, x1, y0 = 0, y1 = 1) {
 function binaryToType(nw, ne, se, sw) {
   let a = [nw, ne, se, sw];
   return a.reduce((res, x) => (res << 1) | x);
+}
+
+function adjustResolution(avgFPS) {
+  if (adaptiveCooldown > 0) {
+    adaptiveCooldown--;
+    return;
+  }
+
+  let changed = false;
+
+  if (avgFPS < TARGET_FPS_LOW && res < RES_MAX) {
+    res = Math.min(res + RES_STEP, RES_MAX);
+    changed = true;
+  } else if (avgFPS > TARGET_FPS_HIGH && res > RES_MIN) {
+    res = Math.max(res - RES_STEP, RES_MIN);
+    changed = true;
+  }
+
+  if (changed) {
+    adaptiveCooldown = 3; // skip 3 sample windows (~180 frames) before adjusting again
+    canvasSize();
+  }
 }
 
 function getDocumentHeight() {
