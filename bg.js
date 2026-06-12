@@ -17,11 +17,14 @@ const RES_STEP = 2;
 let adaptiveCooldown = 0;
 //----
 
+// Mobile detection — static render if true
+const isMobile = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
+  || (navigator.maxTouchPoints > 1 && window.innerWidth < 768);
+
 let canvas;
 let ctx;
-//let fpsCount = document.getElementById("fps-count");
 let frameValues = [];
-let inputValues= [];
+let inputValues = [];
 
 let currentThreshold = 0;
 let cols = 0;
@@ -31,17 +34,41 @@ let zBoostValues = [];
 let noiseMin = 100;
 let noiseMax = 0;
 
-let mousePos = { x: -99, y: -99 }; //intialize ofdfscreen
-let mouseDown = true; //WIP
+let mousePos = { x: -99, y: -99 };
+let mouseDown = true;
 
 setupCanvas();
-animate();
 
+if (isMobile) {
+  // Generate and draw a single static frame, then stop
+  zOffset = Math.random() * 1000; // randomise the static snapshot so it doesn't look the same every load
+  generateNoise();
+  const roundedNoiseMin = Math.floor(noiseMin / thresholdIncrement) * thresholdIncrement;
+  const roundedNoiseMax = Math.ceil(noiseMax / thresholdIncrement) * thresholdIncrement;
+  for (let threshold = roundedNoiseMin; threshold < roundedNoiseMax; threshold += thresholdIncrement) {
+    currentThreshold = threshold;
+    renderAtThreshold();
+  }
+} else {
+  animate();
+}
 
 window.addEventListener('resize', canvasSize);
 document.addEventListener('fullscreenchange', () => {
-  // piccolo delay per permettere al browser di stabilizzarsi
   setTimeout(canvasSize, 100);
+  // Redraw static frame on resize for mobile
+  if (isMobile) {
+    generateNoise();
+    const roundedNoiseMin = Math.floor(noiseMin / thresholdIncrement) * thresholdIncrement;
+    const roundedNoiseMax = Math.ceil(noiseMax / thresholdIncrement) * thresholdIncrement;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let threshold = roundedNoiseMin; threshold < roundedNoiseMax; threshold += thresholdIncrement) {
+      currentThreshold = threshold;
+      renderAtThreshold();
+    }
+    noiseMin = 100;
+    noiseMax = 0;
+  }
 });
 
 
@@ -54,16 +81,32 @@ function setupCanvas() {
   } else {
     canvas = canvasElement;
     ctx = canvasCtx;
-   
   }
   canvasSize();
   window.addEventListener('resize', () => {
     canvasSize();
+    // Redraw static frame after resize on mobile
+    if (isMobile) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      noiseMin = 100;
+      noiseMax = 0;
+      generateNoise();
+      const roundedNoiseMin = Math.floor(noiseMin / thresholdIncrement) * thresholdIncrement;
+      const roundedNoiseMax = Math.ceil(noiseMax / thresholdIncrement) * thresholdIncrement;
+      for (let threshold = roundedNoiseMin; threshold < roundedNoiseMax; threshold += thresholdIncrement) {
+        currentThreshold = threshold;
+        renderAtThreshold();
+      }
+      noiseMin = 100;
+      noiseMax = 0;
+    }
   });
 
-  canvas.addEventListener('mousemove', (e) => {
-    mousePos = { x: e.offsetX, y: e.offsetY };
-  });
+  if (!isMobile) {
+    canvas.addEventListener('mousemove', (e) => {
+      mousePos = { x: e.offsetX, y: e.offsetY };
+    });
+  }
 }
 
 function canvasSize() {
@@ -73,14 +116,11 @@ function canvasSize() {
 
   const docHeight = getDocumentHeight();
 
-  // buffer reale
   canvas.width  = rect.width * dpr;
   canvas.height = docHeight * dpr;
 
-  // reset trasformazioni (evita accumulo)
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-  // dimensione visiva
   canvas.style.width  = rect.width + 'px';
   canvas.style.height = docHeight + 'px';
 
@@ -124,21 +164,16 @@ function animate() {
 }
 
 function mouseOffset() {
-  //find the input value at the mouse location
   let x = Math.floor(mousePos.x / res);
   let y = Math.floor(mousePos.y / res);
   if (inputValues[y] === undefined || inputValues[y][x] === undefined) return;
-  const incrementValue = 0.0055; // The value to increment by
-  const radius = 12; // Control the size of the circle
+  const incrementValue = 0.0055;
+  const radius = 12;
   for (let i = -radius; i <= radius; i++) {
     for (let j = -radius; j <= radius; j++) {
-      // Calculate the distance from the center (x, y) to the current cell
       const distanceSquared = i * i + j * j;
       const radiusSquared = radius * radius;
-
-      // Check if the current cell is within the circle and not undefined
       if (distanceSquared <= radiusSquared && zBoostValues[y + i]?.[x + j] !== undefined) {
-        //set value, larger increment closer to the center of the circle
         zBoostValues[y + i][x + j] += incrementValue * (1 - distanceSquared / radiusSquared);
       }
     }
@@ -164,19 +199,16 @@ function renderAtThreshold() {
   const rect = canvas.parentElement?.getBoundingClientRect() || canvas.getBoundingClientRect();
   const grad = ctx.createLinearGradient(0, 0, 0, rect.height);
 
-  "FF4517"
   grad.addColorStop(0, "#edd500ff");
   grad.addColorStop(0.50 ,"#FF006F");
   grad.addColorStop(1, "#1723ccff");
 
   ctx.strokeStyle = grad;
 
-
   ctx.lineWidth = currentThreshold % (thresholdIncrement * thickLineThresholdMultiple) === 0 ? 2 : 1;
 
   for (let y = 0; y < inputValues.length - 1; y++) {
     for (let x = 0; x < inputValues[y].length - 1; x++) {
-      //check if every value in the square is above or below the threshold
       if (inputValues[y][x] > currentThreshold && inputValues[y][x + 1] > currentThreshold && inputValues[y + 1][x + 1] > currentThreshold && inputValues[y + 1][x] > currentThreshold) continue;
       if (inputValues[y][x] < currentThreshold && inputValues[y][x + 1] < currentThreshold && inputValues[y + 1][x + 1] < currentThreshold && inputValues[y + 1][x] < currentThreshold) continue;
      
@@ -323,7 +355,7 @@ function adjustResolution(avgFPS) {
   }
 
   if (changed) {
-    adaptiveCooldown = 3; // skip 3 sample windows (~180 frames) before adjusting again
+    adaptiveCooldown = 3;
     canvasSize();
   }
 }
