@@ -1,0 +1,297 @@
+{
+  "version": 1,
+  "foundation": {
+    "strategy": "preserve",
+    "existingAssets": [
+      "style.css (Poppins headings, Nunito body, #1723CC primary blue, #380BBF violet hover, #6A72E6/#5A63DC lighter blues, #000/#0D0D0D/rgba(36,36,36) dark surfaces)",
+      "styleZombie.css (same Poppins/Nunito system)",
+      "bg.js (Perlin-noise marching-squares topographic canvas, contour gradient #EDD500 -> #FF006F -> #1723CC, thick line every 3rd threshold, adaptive resolution 12-32)",
+      "Media/ProfilePic.jpg",
+      "Media/Projects/CastleBound.png, GunSmoke.png, PhotonDash.png, PlayFab.png, SlimyFiles.png, Steelsilk.jpg, ZombieScreenshot.png",
+      "Media tool icons: Unreal.png, Unity.png, C++.svg, CSharp.png, Git_icon.png, Subversion.png, perforce.jpg, Rider.png",
+      "Media social icons: Git.png, Linkedin.png, Itch.png",
+      "Media/MarcoPiamonte_CV.pdf",
+      "Text wordmark 'Marco Piamonte' in nav (no graphic logo exists)"
+    ],
+    "assetActions": [
+      {
+        "asset": "bg.js topographic contour canvas",
+        "action": "protect",
+        "reason": "User explicitly requires the topographic lines theme; it is the site's recognizable identity"
+      },
+      {
+        "asset": "Contour gradient #EDD500 -> #FF006F -> #1723CC",
+        "action": "evolve",
+        "reason": "Keep hues and order but lower line opacity behind content so text stays readable; the hue sequence is part of the existing identity"
+      },
+      {
+        "asset": "bg.js render loop and FPS counter",
+        "action": "evolve",
+        "reason": "Performance brief: cap DPR at 1.5 and cell count on 4K, single static frame on mobile and reduced motion, pause offscreen and in hidden tabs, showFPS false"
+      },
+      {
+        "asset": "Primary blue #1723CC",
+        "action": "preserve",
+        "reason": "Most-used existing brand color; becomes the single chromatic beacon for primary action fills, focus and selected states"
+      },
+      {
+        "asset": "Violet #380BBF",
+        "action": "preserve",
+        "reason": "Existing hover color for buttons; kept as accentHover"
+      },
+      {
+        "asset": "Lighter blue #6A72E6",
+        "action": "preserve",
+        "reason": "Existing accent tint; used as accentText because #1723CC fails text contrast on near-black"
+      },
+      {
+        "asset": "Yellow #FFF700 highlight",
+        "action": "retire",
+        "reason": "Only used as an invalid background-image declaration that never renders (style.css:124), so it has no visible role; yellow survives in the contour gradient"
+      },
+      {
+        "asset": "Blue glow box-shadows (0 0 15-25px #1723CC)",
+        "action": "evolve",
+        "reason": "User asked for a less fancy result; replace glows with a 1px border and accent border on hover/focus, also lowering paint cost on low-end PCs"
+      },
+      {
+        "asset": "backdrop-filter blur on nav",
+        "action": "evolve",
+        "reason": "Expensive on low-end GPUs and mobile; replace with an opaque near-black nav surface at 92% opacity, no blur"
+      },
+      {
+        "asset": "Poppins and Nunito typefaces",
+        "action": "protect",
+        "reason": "Verified existing brand typefaces in style.css and styleZombie.css; they remain the only two families"
+      },
+      {
+        "asset": "Project screenshots and profile photo",
+        "action": "protect",
+        "reason": "Real project evidence; the only imagery the site needs"
+      },
+      {
+        "asset": "Tool and social PNG icons",
+        "action": "preserve",
+        "reason": "Existing icon system; normalize into equal square tiles, no new hand-drawn icons"
+      },
+      {
+        "asset": "Text wordmark 'Marco Piamonte'",
+        "action": "preserve",
+        "reason": "No graphic logo exists; keep a restrained Poppins text treatment and do not invent one"
+      }
+    ],
+    "lockedDecisions": [
+      "Keep all existing content and copy across index, project detail pages and resume",
+      "Topographic contour canvas stays as hero and page backdrop",
+      "Dark theme only: the existing site is dark and nothing in the brief asks for light mode",
+      "Poppins for headings and labels, Nunito for body: exactly two typeface families",
+      "#1723CC primary accent, #380BBF hover, #6A72E6 accent text",
+      "Static HTML/CSS/vanilla JS, no framework or animation library",
+      "Must run well on mobile, 4K and low-end PCs; FPS counter hidden",
+      "Modest, programmer-portfolio tone, not a web-dev showcase"
+    ],
+    "assumptions": [
+      "No third family is added. The small uppercase metadata labels in the sidrano and stodio references (dates, status, section index, location line) are set in Poppins 500 uppercase with wide tracking and tabular figures, which keeps the label role without a mono face",
+      "References are applied as composition and density guides, not colors: sidrano hero (bordered nav bar, large left headline with right supporting text and buttons, dotted rules), avoora work cards (full-bleed screenshot in a rounded frame with overlaid caption bar), mitchy about (headline plus photo with short paragraph), stodio footer (dark rounded panel)",
+      "The monumental red wordmark from the sidrano hero is not adopted, to avoid fanciness; the hero name stays large within the Poppins scale",
+      "Light-surface references (fabrica, meridian, stodio) are translated to dark surfaces because the existing identity is dark",
+      "Contact form behavior stays as it is in main.js"
+    ]
+  },
+  "creativeDirection": {
+    "summary": "A quiet dark technical portfolio where the topographic contour field is the only atmosphere. Above it sit plain, well-spaced type and the real game screenshots, framed like level captures, with one blue beacon guiding the actions. It should read like a tidy engine tool, not a web showcase.",
+    "traits": [
+      {
+        "quality": "Technical clarity: tracked uppercase metadata, numbered sections, aligned grids",
+        "boundary": "not a code-themed gimmick (no terminal windows, fake code snippets or typing effects)"
+      },
+      {
+        "quality": "Atmospheric backdrop from the contour lines",
+        "boundary": "not competing with content; lines drop to low opacity behind cards and text"
+      },
+      {
+        "quality": "Screenshot-led project presentation",
+        "boundary": "not decorated with gradients, tilts or neon glows"
+      },
+      {
+        "quality": "Confident, readable type scale",
+        "boundary": "not oversized monumental display type"
+      }
+    ],
+    "productiveTension": "A living, generative contour field (the motion and craft side of a gameplay programmer) against a strictly still, grid-disciplined content layer with flat surfaces and 1px borders",
+    "signatureDevice": {
+      "description": "The existing topographic contour canvas with a thick contour every third threshold. Its yellow-magenta-blue gradient is echoed once as a short horizontal rule under each section label, borrowing the sidrano reference's line-with-dot divider and a contour's thick index line.",
+      "status": "existing",
+      "invariants": [
+        "Contour canvas only appears full-bleed behind the hero and dimmed (about 0.25 opacity) behind the rest of the page",
+        "Gradient hue order is always #EDD500 -> #FF006F -> #1723CC, top to bottom or left to right",
+        "Section rule is 1-2px tall and at most 96px wide; never used as a fill, button or text color",
+        "Contour lines never animate on mobile, under reduced motion or in hidden tabs"
+      ]
+    },
+    "restraint": "The gradient lives only in the canvas and the short section rule. Every other surface is flat near-black with 1px neutral borders. Blue fills appear only on the primary button and active/focus states, and nothing glows.",
+    "avoid": [
+      "Glow box-shadows and neon outlines",
+      "backdrop-filter blur",
+      "Glassmorphism stacks",
+      "Gradient text or gradient buttons",
+      "Monumental display wordmarks",
+      "Tilted or 3D-transform cards",
+      "Fake code or terminal decoration",
+      "Per-card different colors",
+      "Hairline grid systems absent from the references",
+      "Invented stats, testimonials or client logos",
+      "Hand-drawn SVG icons",
+      "Adding a third typeface family"
+    ]
+  },
+  "colorPalette": [
+    {
+      "name": "Dark Canvas",
+      "value": "#000000",
+      "usage": "Dominant. canvas token in the dark theme."
+    },
+    {
+      "name": "Dark Surface",
+      "value": "#0E0F15",
+      "usage": "Dominant. surface token in the dark theme."
+    },
+    {
+      "name": "Dark Surface alt",
+      "value": "#13141B",
+      "usage": "Supporting. surface alt token in the dark theme."
+    },
+    {
+      "name": "Dark Text",
+      "value": "#E9EBF3",
+      "usage": "Semantic. text token in the dark theme."
+    },
+    {
+      "name": "Dark Text muted",
+      "value": "#9C9EA6",
+      "usage": "Semantic. text muted token in the dark theme."
+    },
+    {
+      "name": "Dark Divider",
+      "value": "#414249",
+      "usage": "Semantic. divider token in the dark theme."
+    },
+    {
+      "name": "Dark Control border",
+      "value": "#84868E",
+      "usage": "Semantic. control border token in the dark theme."
+    },
+    {
+      "name": "Dark Accent",
+      "value": "#1723CC",
+      "usage": "Sparse accent. accent token in the dark theme."
+    },
+    {
+      "name": "Dark Accent hover",
+      "value": "#380BBF",
+      "usage": "Semantic. accent hover token in the dark theme."
+    },
+    {
+      "name": "Dark On accent",
+      "value": "#FFFFFF",
+      "usage": "Semantic. on accent token in the dark theme."
+    },
+    {
+      "name": "Dark Accent text",
+      "value": "#6A72E6",
+      "usage": "Sparse accent. accent text token in the dark theme."
+    },
+    {
+      "name": "Dark Focus ring",
+      "value": "#7299FF",
+      "usage": "Semantic. focus ring token in the dark theme."
+    }
+  ],
+  "typefaces": [
+    {
+      "family": "Poppins",
+      "source": "Existing brand (style.css); Google Fonts https://fonts.google.com/specimen/Poppins, OFL https://github.com/google/fonts/tree/main/ofl/poppins",
+      "roles": [
+        "hero name",
+        "section headings",
+        "project titles",
+        "nav wordmark",
+        "buttons",
+        "uppercase metadata labels (status/date/role line, //01 section index, location line, form labels)"
+      ],
+      "weights": [
+        500,
+        600,
+        700
+      ]
+    },
+    {
+      "family": "Nunito",
+      "source": "Existing brand (style.css); Google Fonts https://fonts.google.com/specimen/Nunito, OFL https://github.com/google/fonts/tree/main/ofl/nunito",
+      "roles": [
+        "body copy",
+        "bio",
+        "form fields",
+        "project detail prose",
+        "nav links"
+      ],
+      "weights": [
+        400,
+        600
+      ]
+    }
+  ],
+  "interfaceDirection": "Spacing is an 8px base rhythm. Sections use clamp(72px, 10vw, 160px) vertical padding, content width is capped at 1240px, and gutters are clamp(20px, 5vw, 64px); above 2000px wide the root font size scales up (clamp on html font-size) so 4K never shows a tiny column. Type scale: hero name clamp(2.75rem, 6vw, 5.5rem) Poppins 700, -0.02em tracking, sentence case; role line Poppins 500 clamp(1.25rem, 2vw, 1.75rem) in textMuted; section headings clamp(2rem, 4vw, 3.25rem) Poppins 600; body Nunito 400 1.0625rem with 1.65 line height and 65ch max; labels Poppins 500 0.75-0.8125rem uppercase with +0.1em tracking and font-variant-numeric: tabular-nums. Surfaces: pure black canvas with the contour field; cards and panels use a surface step derived from the neutral seed with a 1px divider border; surfaceAlt for nav bar and footer panel. No shadows: depth comes only from border and surface step. Radius family: 6px buttons, inputs and icon tiles; 12px cards and media frames; 20px footer panel. Nav follows sidrano: a full-width bar with a 1px border, wordmark left, links centered, social icon buttons right, collapsing to a hamburger and sheet below 900px. Hero follows sidrano: name and role left with dotted 1px rules above and below; location label and a row of 44px square tool-icon tiles right, stacked on mobile. About follows mitchy/meridian: heading and bio left, profile photo in a 12px-radius frame right, photo first on mobile. Projects follow avoora: each card is a 16:10 screenshot frame with a dark overlaid caption bar holding index (01), title and the uppercase status/date/role line; two columns on desktop, one on mobile, and the first project may span full width. Contact follows the obvia CTA: large heading, a 1px rule, then the form in a two-column field grid (Email + Subject, Message full width). Footer is a stodio-style dark rounded panel with nav links and social icons. Controls: primary button is a #1723CC fill with white Poppins 600 text and 6px radius, #380BBF on hover; secondary is transparent with a 1px controlBorder, accent border on hover. Focus is a 2px #6A72E6 outline with 3px offset on every interactive element. Inputs use a surface fill and 1px border, accent border on focus. Nav links are textMuted, text on hover, accentText with an underline when active. Cards respond to hover/focus with a 1px accent border while the screenshot scales to 1.03 inside its clipped frame. Recurring accent treatment: the caption-bar index number and the active card border.",
+  "imageDirection": {
+    "summary": "Real game screenshots and Marco's own photo carry all imagery; the contour canvas supplies atmosphere. No stock, generated people or decorative illustration.",
+    "subjects": [
+      "Project screenshots from Media/Projects (Castlebound, Gunsmoke and Grimoires, Photon Dash, Slimy Files, Steelsilk Championship, Zombie FPS, MatchMaking/PlayFab)",
+      "Media/ProfilePic.jpg",
+      "Existing tool and social icon PNG/SVG files"
+    ],
+    "treatment": "Screenshots use object-fit: cover in a fixed 16:10 frame with 12px radius and a 1px divider border. A dark caption bar (surface at 88% opacity, no blur) is overlaid at the bottom, inset 12px, holding index, title and metadata, after the avoora reference. Images use loading=lazy, decoding=async, explicit width/height and sizes attributes. The profile photo sits in a 4:5 frame with the same radius. Tool icons sit centered at 60% size inside equal 44px square tiles on surfaceAlt so mismatched source icons read as one set.",
+    "avoid": [
+      "Stock photography",
+      "AI-generated people or scenes",
+      "Decorative SVG illustration",
+      "Color overlays or duotone on screenshots",
+      "Rotated or stacked photo collages",
+      "Background-image screenshots without alt text"
+    ]
+  },
+  "motionDirection": {
+    "summary": "Motion explains structure and confirms input while staying light for low-end PCs. The contour field provides ambient movement, so content motion is short, transform/opacity only, and runs once.",
+    "principles": [
+      "Hero entrance to establish hierarchy, triggered on DOMContentLoaded after fonts are ready: wordmark, then name, role line and tool-icon tiles rise 16px and fade in, in sequence; 520-680ms each with 70ms stagger (240ms cap); strong ease-out cubic-bezier(0.2,0.7,0.2,1)",
+      "Contour canvas fade-in to avoid a blank-to-busy pop, triggered on the first rendered frame: canvas opacity rises from 0 to its target behind the hero; 700-800ms; gentle ease-out",
+      "Project card reveal to show the grid as a sequence, triggered by IntersectionObserver per card (threshold 0, rootMargin 0px 0px 10% 0px, unobserve on first hit, only for cards below the viewport at init): each card rises 24px and fades in while its screenshot settles from scale 1.04 to 1 inside the clipped frame; 560-720ms with 80ms stagger per row; ease-out",
+      "About reveal to pair photo with text, triggered by IntersectionObserver on the about group: the photo frame slides 24px in from its side while heading and bio fade up 12px, 80ms later; 500-650ms; ease-out",
+      "Contact reveal to lead the eye into the form, triggered by IntersectionObserver on the contact heading group: the heading fades up, the 1px rule scales in on the X axis from the left, then the form fields fade in; 450-600ms with 70ms stagger; ease-out",
+      "Button and card feedback to confirm hover and press, triggered on hover, focus-visible and active: background, border-color and transform (translateY -1px on hover, 0 on press) transition on named properties only; 140-200ms; ease-out",
+      "Navigation feedback to show state, triggered on link hover/focus and section change: underline scaleX 0 to 1 from the left plus color shift; 160-220ms; ease-out. The hamburger sheet opens with opacity and translateY(-8px to 0) while the icon morphs to close; 220-250ms; ease-out",
+      "Reduced motion to keep everything readable, triggered by prefers-reduced-motion including live changes: owned animations are cancelled, observers disconnected, all elements shown in final state, and the contour canvas draws one static frame; 0ms, immediate"
+    ],
+    "avoid": [
+      "transition: all",
+      "Scale-from-zero entrances",
+      "Hover-only information",
+      "Parallax or scroll-jacking",
+      "Perpetual floating or pulsing elements",
+      "Blur or clip-path animations",
+      "Replaying reveals on scroll back",
+      "A global opacity:0 reveal class in CSS",
+      "Transforms on ancestors of the fixed nav",
+      "Animating the canvas on mobile, under reduced motion or in hidden tabs"
+    ]
+  },
+  "voice": {
+    "summary": "Existing copy stays unchanged. New UI microcopy (button labels, aria-labels, //01 section index labels) is short, plain and practical, like a developer's README: 'View project', 'Download CV', 'Send message'.",
+    "avoid": [
+      "Marketing hype",
+      "Invented achievements, stats or testimonials",
+      "Web-agency jargon",
+      "Emoji additions beyond the existing location pin",
+      "Rewriting the bio or project descriptions"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "contour_canvas",
+  "description": "Configuration of the existing topographic contour background rendered live by bg.js into canvas#res-canvas (Perlin noise + marching squares).",
+  "source": "bg.js",
+  "renderer": { "script": "bg.js", "canvasId": "res-canvas", "noise": "@chriscourses/perlin-noise (local copy in node_modules/@chriscourses/perlin-noise/index.js)" },
+  "existingValues": {
+    "thresholdIncrement": 4,
+    "thickLineThresholdMultiple": 3,
+    "cellResolutionPx": 12,
+    "adaptiveResolution": { "min": 12, "max": 32, "step": 2, "targetFpsLow": 24, "targetFpsHigh": 40 },
+    "baseZOffset": 0.0002,
+    "lineWidth": { "thin": 1, "thick": 2 },
+    "gradient": ["#EDD500", "#FF006F", "#1723CC"],
+    "showFPS": true
+  },
+  "targetValues": {
+    "showFPS": false,
+    "maxDevicePixelRatio": 1.5,
+    "staticFrameOn": ["mobile/touch", "prefers-reduced-motion"],
+    "pauseWhen": ["hero offscreen", "document.hidden"],
+    "dimmedOpacityBehindLaterSections": 0.25,
+    "fadeInMs": 750
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "originalRequest": "Based on this current website improve the overall design while keeping the same content. I want to preserve the topographic lines theme but I also want the website to run well on mobiles , 4K screens or lower end pcs. The end result shouldn't be too fancy as it's a website for a gameplay programmer portfolio, not a web developer",
+  "subject": "Personal portfolio of Marco Piamonte, a gameplay programmer based in Malmö, Sweden (from Italy), studying Game Programming",
+  "pageType": "Existing multi-page static portfolio site redesign (index.html home plus project detail pages and resume.html)",
+  "scope": "Visual redesign of the existing site keeping all current content: home page (hero, about, projects grid, contact) as the primary focus, with consistent styling carried to the project detail pages (castlebound, gunsmoke, photon-dash, playfab, slimyfiles, steelsilk, zombie) and resume page. No new content sections or invented content.",
+  "primaryGoal": "Present Marco's gameplay programming work clearly to recruiters and studios so they browse projects and get in touch, with a cleaner, more polished look that performs well on every device",
+  "audience": "Game studio recruiters, hiring leads and fellow developers reviewing gameplay programmer candidates, on desktop (including 4K), laptops, low-end PCs and mobile",
+  "offer": "A gameplay programmer with shipped and prototype projects in Unreal and Unity (C++, C#), including gameplay and network programming work",
+  "primaryAction": "Open project pages and view the resume, then contact via the contact form or Git/LinkedIn/Itch links",
+  "creativeControl": "Designer may refine layout, spacing, typography hierarchy, color usage and card styling, but must keep all content, the topographic theme and a modest, performance-first aesthetic",
+  "requiredContent": [
+    "Navigation: logo name 'Marco Piamonte', links Home, About Me, Projects, Contact, Resume, hamburger on mobile, GitHub/LinkedIn/Itch icon buttons",
+    "Hero: 'Marco Piamonte', 'Gameplay Programmer', '📍Malmö, Sweden', tool/skill icons (Unreal, Unity, C++, C#, Git, Subversion, Perforce, Rider) over the animated topographic line canvas",
+    "About: profile photo (Media/ProfilePic.jpg) and existing bio text unchanged",
+    "Projects: cards for Castlebound, Gunsmoke and Grimoires, Photon Dash, Slimy Files, Steelsilk Championship, Zombie FPS, MatchMaking Project (PlayFab), each with its existing screenshot from Media/Projects, status/date/role line (e.g. 'Published, 14th March 2025, Gameplay Programmer') and link to its detail page",
+    "Contact Me: existing form with Email, Subject, Message fields",
+    "Project detail pages and resume page: same content, restyled to match the home page (resume links MarcoPiamonte_CV.pdf)"
+  ],
+  "constraints": [
+    "Keep all existing content and copy; only improve design and presentation",
+    "Preserve the topographic contour-lines theme (bg.js Perlin-noise marching-squares canvas)",
+    "Must perform well on mobile, 4K displays and low-end PCs: keep adaptive resolution, cap DPR/resolution on 4K, static or reduced render on mobile, pause when offscreen/hidden, honor prefers-reduced-motion",
+    "Restrained, not flashy: a gameplay programmer portfolio, not a web-dev showcase; avoid heavy effects, glassmorphism stacks, large libraries",
+    "Static HTML/CSS/vanilla JS site (no framework); keep existing file structure and assets",
+    "Responsive layout scaling cleanly from small phones to 4K (fluid type, max content width)",
+    "Hide the FPS counter (showFPS currently true) in production",
+    "Subtle entrance/scroll animations allowed, lightweight and disabled under prefers-reduced-motion"
+  ],
+  "brandInputs": [
+    "Typography: Poppins and Nunito (style.css, styleZombie.css)",
+    "Colors: primary blue #1723cc (most used), accents rgb(106,114,230), rgb(90,99,220), violet #380bbf, dark greys rgba(36,36,36), #0f172a, highlight #fff700 (style.css)",
+    "Visual style: dark background with animated topographic contour lines canvas (bg.js), card-based sections",
+    "Assets: Media/ProfilePic.jpg, project screenshots in Media/Projects, tool icons and social icons in Media"
+  ],
+  "assumptions": [
+    "Home page is the main focus; detail and resume pages get the same visual system for consistency",
+    "Section count stays as existing (hero, about, projects, contact) rather than expanding to eight, since the user asked to keep the same content",
+    "Existing blue/violet palette and Poppins/Nunito are kept as a starting point but may be refined for contrast",
+    "Typo fixes in dates (e.g. 'Februrary', '22th') are left as content unless the build phase treats them as minor copy corrections",
+    "Light entrance and scroll animations are kept, respecting reduced-motion"
+  ],
+  "unresolved": [
+    "Whether the contact form has a working backend (main.js) is unverified; keep current behavior"
+  ],
+  "explicitAnswers": []
+}

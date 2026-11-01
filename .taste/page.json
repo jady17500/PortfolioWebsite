@@ -1,0 +1,360 @@
+{
+  "version": 1,
+  "page": {
+    "title": "Marco Piamonte | Gameplay Programmer",
+    "route": "/",
+    "description": "Portfolio of Marco Piamonte, a gameplay programmer in Malmö, Sweden. Shipped and prototype projects in Unreal and Unity, plus a resume and a contact form."
+  },
+  "architecture": {
+    "contract": "This page helps game studio recruiters and hiring leads decide whether Marco is worth interviewing as a gameplay programmer. Its job is to get them into his project pages quickly, and the conversion is opening a project detail page, then contacting him or viewing the resume.",
+    "mode": "scan_compare",
+    "novelty": "low",
+    "grid": "12-column grid, max content width 1240px centered, column gap clamp(16px, 2vw, 32px), side gutters clamp(20px, 5vw, 64px). Above 2000px viewport width html font-size scales with clamp(16px, 0.42vw + 8px, 24px) so the 1240px container (defined in rem as 77.5rem) grows with 4K instead of becoming a thin column. Vertical rhythm is an 8px base; sections use clamp(72px, 10vw, 160px) top and bottom padding.",
+    "signatureRule": "Derived from sidrano-01-hero: every major band sits between horizontal 1px rules that span the full container. The hero has dotted rules above and below the headline band and a solid line ending in a 6px dot along its base; later sections reuse one solid 1px rule under their heading row (avoora, obvia). The only colored part of any rule is the brand's existing signature: a 96px #EDD500 -> #FF006F -> #1723CC segment where the rule starts on the left. No other line system or ornament is added.",
+    "rhythm": "Full-viewport hero over the live contour canvas (loudest), then the about band on the dimmed canvas (quiet, image-led), then the projects band (densest, media-led), then contact on a full-bleed surface step (#0E0F15) as the single surface change, then the footer as a rounded surfaceAlt panel. Spacing alternates generous (hero, about) with tighter, grid-dense spacing (projects), then opens up again for contact."
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "target": "#hero"
+    },
+    {
+      "label": "About Me",
+      "target": "#about"
+    },
+    {
+      "label": "Projects",
+      "target": "#projects"
+    },
+    {
+      "label": "Contact",
+      "target": "#contact"
+    },
+    {
+      "label": "Resume",
+      "target": "resume.html"
+    }
+  ],
+  "navigationDesign": {
+    "layoutCase": "reference-navigation",
+    "layout": "Follows the sidrano-01-hero nav: one fixed bar inset to the container width (desktop reference: bar spans 5%-95% of 1435px, top offset 24px, height about 64px, 1px #414249 border, square corners). Inside, left to right: Poppins 600 wordmark 'Marco Piamonte' at about 1.25rem; a centered link group (Home, About Me, Projects, Contact, Resume) in Nunito 600 0.9375rem, textMuted, gap 32px; at the right, three 40px square social icon buttons (GitHub, LinkedIn, itch.io) with a 6px radius, a surfaceAlt fill and the existing Git.png, Linkedin.png and Itch.png at 60% size, where the reference has its red CTA. The bar background is #13141B at 92% opacity with no backdrop blur. The reference's middle location/clock group is dropped because the location already lives in the hero.",
+    "behavior": [
+      "Link hover/focus: color moves from textMuted to text, and a 1px underline scales on the X axis from the left over 180ms ease-out",
+      "The link for the section currently in view takes accentText #6A72E6 with a persistent underline and aria-current='true'; this is driven by an IntersectionObserver on the section headings",
+      "Social buttons: border moves from #414249 to #1723CC and the button lifts translateY(-1px) over 160ms; each has an aria-label (for example 'Marco on GitHub') and opens in a new tab with rel='noopener'",
+      "Below 900px, the hamburger button (aria-expanded, aria-controls) opens a full-width sheet under the bar with opacity and translateY(-8px to 0) over 220ms; the three-line icon morphs to a close icon; Escape and link activation close it and focus returns to the toggle",
+      "No transform is ever applied to the nav's ancestors; the page scrolls natively"
+    ],
+    "transformation": {
+      "compact": "Under 900px: the bar goes full width with a 16px inset, keeping its 1px border and 56px height, with the wordmark on the left and a 44px hamburger on the right (as in the sidrano mobile reference). The sheet lists the five links stacked at 1.125rem with 52px rows and 1px dividers, then the three social buttons in a row at 44px.",
+      "medium": "900-1199px: same single bar, link gap tightens to 20px, social buttons shrink to 36px.",
+      "expanded": "1200px and up: the full reference bar. At 4K the bar scales with root rem, stays within the 1240px-equivalent container and never stretches edge to edge."
+    }
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "layoutFamily": "hero",
+      "layoutCases": [
+        "sidrano-01-hero"
+      ],
+      "referenceDirectionId": "sidrano-01-hero",
+      "purpose": "Establish who Marco is, his role and location, and the tools he works with, over the signature topographic canvas, and route visitors to the projects.",
+      "userQuestion": "Who is this and what kind of programmer are they?",
+      "stage": "orient",
+      "dependencies": [],
+      "evidence": [
+        "index.html hero copy: 'Marco Piamonte', 'Gameplay Programmer', '📍Malmö, Sweden'",
+        "Media tool icons: Unreal.png, Unity.png, C++.svg, CSharp.png, Git_icon.png, Subversion.png, perforce.jpg, Rider.png",
+        "bg.js topographic canvas"
+      ],
+      "copy": {
+        "heading": "Marco Piamonte",
+        "body": [
+          "Gameplay Programmer",
+          "📍Malmö, Sweden"
+        ],
+        "callsToAction": [
+          {
+            "label": "View projects",
+            "target": "#projects"
+          },
+          {
+            "label": "View resume",
+            "target": "resume.html"
+          }
+        ]
+      },
+      "layout": "Composition map from sidrano-01-hero (desktop reference 1435x1096; mobile 817x1925). Full-bleed section, min-height 100svh, with canvas#res-canvas absolutely positioned behind it at full opacity; content sits in the 12-column container. Desktop vertical map as fractions of section height: nav 2-8%; empty canvas space 8-26%; meta row 27-35%; dotted 1px rule (#414249, 2px dot / 4px gap) at 39%; headline band 43-61%; second dotted rule at 65%. The reference's monumental red wordmark band (70-90%) is removed per brand restraint, so the base line row moves up and the section closes at about 80% of the reference height (min 100svh). Base row at the bottom: a solid 1px #84868E line from the left edge to 64% width ending in a 6px circle, followed on the right by a Poppins 500 uppercase label link 'Scroll to projects' (target #projects). Meta row: left (cols 1-5) takes the place of the avatar stack and stars: a horizontal row of eight 44px square tool tiles (6px radius, surfaceAlt fill, 1px divider border, icon at 60%, gap 8px), each img with alt naming the tool (Unreal Engine, Unity, C++, C#, Git, Subversion, Perforce, Rider). Right (cols 9-12, right-aligned) takes the place of 'DESIGN X STRATEGY / 2026-27': the location '📍Malmö, Sweden' in Poppins 500 at clamp(1.25rem, 2vw, 1.75rem), set like the reference's large '2026-27' line. Headline band: h1 'Marco Piamonte' spans cols 1-8 (reference heading box 5%-60% width), breaking to exactly 2 lines ('Marco' / 'Piamonte') at desktop, Poppins 700 clamp(2.75rem, 6vw, 5.5rem), line-height 1.02, -0.02em tracking. Right column cols 9-12 (reference 65%-95%): a textMuted '//' marker at the left edge with the role line 'Gameplay Programmer' indented beside it (Poppins 500 clamp(1.25rem, 2vw, 1.75rem), text color), then two buttons side by side 16px below: primary 'View projects' (#1723CC fill, white Poppins 600 uppercase 0.875rem, 6px radius, 48px tall, arrow glyph) and secondary 'View resume' (transparent, 1px #84868E border). Square button proportions follow the reference, softened to the brand's 6px radius. Mobile map (817x1925 reference): the nav is 6% of the height, the meta block runs 15-31% (tool tiles wrap to 2 rows of 4 at 44px, the location line follows below on the left as in the reference's 'DESIGN X STRATEGY' block), the dotted rule sits at 33%, the headline at 36-46% stays 2 lines, the '//' role block at 48-55%, the primary button full-content-width at 57-63%, the secondary below at 64-70%, the dotted rule at 72%, and the base line with dot at 86%. The wordmark band is omitted, as on desktop.",
+      "motion": {
+        "purpose": "spatial_continuity",
+        "trigger": "load",
+        "behavior": "After document.fonts.ready (with a 600ms timeout fallback), the canvas fades from opacity 0 to its target over 750ms. In parallel, a staggered sequence plays: tool tiles and the location line (as a group), h1 line 1, h1 line 2, the role line, then the buttons. Each rises from translateY(16px) to 0 and opacity 0.001 to 1, 70ms apart, with the stagger capped at 240ms. Both dotted rules scale on the X axis from 0 to 1 from the left over 600ms, starting with the first item. The JS adds a 'hero-pending' class only when the hero is in the viewport at load and reduced motion is off; without JS, everything stays visible. Animations use the Web Animations API on the owned elements only.",
+        "durationMs": 620,
+        "easing": "cubic-bezier(0.2, 0.7, 0.2, 1)",
+        "reducedMotion": "No entrance runs. All hero elements and both rules render in their final state immediately, and the canvas draws one static frame at target opacity."
+      },
+      "componentNeeds": [],
+      "assetNeeds": [
+        "contour_canvas",
+        "tool_icon_unreal",
+        "tool_icon_unity",
+        "tool_icon_cpp",
+        "tool_icon_csharp",
+        "tool_icon_git",
+        "tool_icon_subversion",
+        "tool_icon_perforce",
+        "tool_icon_rider"
+      ],
+      "transformation": {
+        "compact": "Under 640px: a single column in source order: tool tiles (wrap 4 per row), location, dotted rule, 2-line name, '//' role line, primary button then secondary button (each width:auto with min 220px, stacked as in the sidrano mobile reference), dotted rule, then the base line with dot. Every element stays and the primary action stays first. The canvas renders one static frame.",
+        "medium": "640-1199px: the meta row stays two-sided (tiles left, location right); the headline band stacks, with the name across the full width and the role/buttons row below it, buttons side by side. The canvas is animated only if the device is not mobile/touch and the frame budget holds.",
+        "expanded": "1200px and up: the full reference geometry, with the headline at cols 1-8 and the role/actions at cols 9-12 sharing the band between the dotted rules. At 4K, type and tiles scale with root rem and the canvas renders with a DPR cap of 1.5 and the adaptive cell size."
+      }
+    },
+    {
+      "id": "about",
+      "layoutFamily": "about",
+      "layoutCases": [
+        "meridian-08-about"
+      ],
+      "referenceDirectionId": "meridian-08-about",
+      "purpose": "Introduce Marco as a person with his own photo and his unchanged bio, so visitors see the motivation behind the work before scanning projects.",
+      "userQuestion": "What is Marco's background and why does he make games?",
+      "stage": "qualify",
+      "dependencies": [
+        "hero"
+      ],
+      "evidence": [
+        "index.html about bio text",
+        "Media/ProfilePic.jpg"
+      ],
+      "copy": {
+        "eyebrow": "//01 About me",
+        "heading": "About",
+        "body": [
+          "Hey everyone ! I'm Marco, 21 years old programmer from Italy, currently studying Game Programming in Sweden. I've been passionate about videogames since I got my first Nintendo DS when I was 6. Later in the years I began studying programming and I was always fascinated about the technology behind the games I love so much. So I decided to blend the 2 things together."
+        ],
+        "callsToAction": [
+          {
+            "label": "View resume",
+            "target": "resume.html"
+          }
+        ]
+      },
+      "layout": "Composition map from meridian-08-about (desktop reference 1544x1018; mobile 970x1622). Section on the dimmed canvas (canvas visible at about 0.25 opacity behind non-hero sections via a fixed overlay gradient; no extra surface). Desktop: two columns. Text column cols 1-6 (reference 2.5%-48% width); photo column cols 7-12 (reference 52.5%-97.5% width). The eyebrow label sits at 13% of section height: a 6px #6A72E6 dot (matching the reference's small colored dot) followed by '//01 About me' in Poppins 500 uppercase 0.8125rem with +0.1em tracking, with the 96px gradient rule segment under it. The heading 'About' sits at 18-26% height in Poppins 600 clamp(2.5rem, 5vw, 4rem). The reference heading is 2 lines; ours is 1 word, so it stays 1 line, leaving the reference's empty band between heading and body (26-63%) as intentional negative space. Body paragraph at 64-76% height, Nunito 400 1.0625rem, line-height 1.65, max 58ch, textMuted to text contrast (#E9EBF3 at 85%). 'View resume' secondary button at 80-86% height (reference's soft rectangle button: surfaceAlt fill, 1px #414249 border, 6px radius, 48px tall). Photo: one media frame at 9%-90% of section height, aspect about 0.84 (portrait, close to 4:5), object-fit cover on Media/ProfilePic.jpg with alt 'Marco Piamonte', 12px radius on the two rounded corners. The reference's chamfered notch (top-right corner cut about 6% of width, bottom-left corner cut about 3% height by 25% width) is reproduced with a static clip-path polygon on the frame. 1px divider border is simulated with an inset outline layer inside the clip. Section height is about 0.66x the container width at desktop. Mobile map (970x1622 reference): photo first, full content width, aspect 1.04:1 cropped to keep the face, with the same chamfers (55% of height); then label (59%), heading (62-66%), body (70-90%), button (93-98%).",
+      "motion": {
+        "purpose": "explanation",
+        "trigger": "scroll_enter",
+        "behavior": "An IntersectionObserver (threshold 0, rootMargin '0px 0px 12% 0px', unobserve on first hit) watches two groups separately: the photo frame and the text column. Only groups below the viewport at init get the prepared state. The photo frame moves from translateX(24px) and opacity 0.001 to rest over 640ms, and the image inside settles from scale(1.04) to 1 within its fixed clip. The text group (label, heading, body, button) rises 12px and fades in, 80ms after the photo. The final state persists and never replays.",
+        "durationMs": 640,
+        "easing": "cubic-bezier(0.2, 0.7, 0.2, 1)",
+        "reducedMotion": "No prepared state is applied. The photo and text are visible immediately, with observers disconnected."
+      },
+      "componentNeeds": [],
+      "assetNeeds": [
+        "profile_photo"
+      ],
+      "transformation": {
+        "compact": "Under 640px: photo first at full width (as in the meridian mobile reference) with chamfers kept, then label, heading, the full bio, and the button. Nothing is truncated.",
+        "medium": "640-1023px: the photo stays first at full width with a 16:11 crop, and the text block follows at a max 60ch width with the same order.",
+        "expanded": "1024px and up: two columns, text cols 1-6 with the heading at the top and the body/button bottom-aligned to the photo base; photo cols 7-12 at about 0.84 aspect. At 4K it scales through root rem."
+      }
+    },
+    {
+      "id": "projects",
+      "layoutFamily": "feature",
+      "layoutCases": [
+        "avoora-03-work-1"
+      ],
+      "referenceDirectionId": "avoora-03-work-1",
+      "purpose": "Show all seven projects as screenshot-led cards with their status, date, role and one-line description, each linking to its detail page. This is the page's core evidence and its primary conversion path.",
+      "userQuestion": "What has Marco actually built, and which project should I open first?",
+      "stage": "evaluate",
+      "dependencies": [
+        "about"
+      ],
+      "evidence": [
+        "index.html project cards (titles, status/date/role lines, one-line descriptions, detail links)",
+        "Media/Projects/ZombieScreenshot.png, Steelsilk.jpg, SlimyFiles.png, PlayFab.png, PhotonDash.png, GunSmoke.png, CastleBound.png",
+        "Detail pages zombie.html, steelsilk.html, slimyfiles.html, playfab.html, photon-dash.html, gunsmoke.html, castlebound.html"
+      ],
+      "copy": {
+        "eyebrow": "7 projects",
+        "heading": "Projects",
+        "body": [
+          "01 | Zombie FPS | Prototype, 27th Februrary 2026, Gameplay Programmer | Horde survival FPS | zombie.html",
+          "02 | Steelsilk Championship | Published, 1st March 2024, Gameplay Programmer | Co-op Rougelike horde shooter | steelsilk.html",
+          "03 | Slimy Files | Published, 9th June 2024, Gameplay Programmer | Sidescrolling 2.5D Platformer | slimyfiles.html",
+          "04 | MatchMaking Project | Prototype, Summer 2024, Gameplay & Network Programmer | Matchmaking using Playfab integration in UE5 | playfab.html",
+          "05 | Photon Dash | Published, 22th November 2024, Gameplay Programmer | Procedurally generated platforming endless runner | photon-dash.html",
+          "06 | Gunsmoke and Grimoires | Published, 14th March 2025, Gameplay Programmer | Isometric western action RPG | gunsmoke.html",
+          "07 | Castlebound | Published, 8th October 2025, Gameplay Programmer | Third person puzzle horror game | castlebound.html"
+        ],
+        "callsToAction": [
+          {
+            "label": "Read more",
+            "target": "each project's detail page"
+          }
+        ]
+      },
+      "layout": "Composition map from avoora-03-work-1 (desktop reference 1634x963; mobile 904x1739). Header row at 4%-10% of the reference height: h2 'Projects' (Poppins 600 clamp(2rem, 4vw, 3.25rem)) on the left, then a 1px vertical divider 48px tall, then the label '■ 7 projects': an 8px #6A72E6 square (the reference uses a small colored square) and Poppins 500 uppercase 0.8125rem with +0.1em tracking. Below at 13% sits a full-width 1px #414249 rule with the 96px gradient segment at its left start. Cards: the reference shows one full-width media card (2.5%-97.5% width, 18%-94% height, aspect about 2.12:1, 12px radius). We keep that geometry for project 01 (Zombie FPS, the most recent): a full-width card with aspect 2.1:1. Projects 02-07 continue in a 2-column grid (cols 1-6 and 7-12, gap 24px) at aspect 16:10, so the grid reads 1 + 3 rows of 2 and all seven projects stay in their existing order. Each card is one <a> to the detail page wrapping a <figure>: the screenshot (object-fit cover, loading lazy except card 01, which is eager with fetchpriority high, explicit width/height, sizes '(min-width:1024px) 50vw, 100vw' for grid cards and '100vw' for card 01), with a 1px #414249 border and 12px radius. The caption bar is overlaid at the bottom, inset 2.3% (about 16px) from the left/right/bottom edges, full inner width, about 12% of card height (min 64px). It uses #0E0F15 at 88% opacity with no blur and an 8px radius. Its inner row, left to right: '(01)' index in Poppins 500 0.8125rem accentText #6A72E6 (the recurring accent treatment), the project title in Poppins 600 clamp(1.125rem, 1.6vw, 1.75rem), a flexible 1px #84868E line that fills the gap (as in the reference), then the one-line description in Nunito 400 0.9375rem, then 'Read more →' in Poppins 600 0.8125rem. The status/date/role line sits directly under the title in Poppins 500 uppercase 0.75rem with +0.08em tracking, textMuted. On the 2-column cards the line segment and description move to a second caption row so the title never truncates. The accessible name of each link is the 'Read more' text plus a visually hidden project title ('Read more about Zombie FPS'). The reference's refracted glass-strip effect over the left of the photo is not reproduced: it relies on blur/refraction, which conflicts with the brand's no-blur rule and low-end performance; recorded as a deviation. Mobile map (904x1739 reference): label above heading, rule at 17%, cards stacked full width at aspect 1.45:1 with a 22px gap and caption bars inset 3%.",
+      "motion": {
+        "purpose": "explanation",
+        "trigger": "scroll_enter",
+        "behavior": "Each card is observed individually (IntersectionObserver threshold 0, rootMargin '0px 0px 10% 0px', unobserve on first entry), and only cards below the viewport at init are prepared. On entry the card rises from translateY(24px), opacity 0.001 to 1, and its screenshot settles from scale(1.04) to 1 inside the overflow-hidden frame, over 640ms. Cards that enter in the same frame get an 80ms stagger by DOM order within the batch, capped at 240ms total. The header rule scales on the X axis from 0 to 1 from the left over 560ms when the header row enters. Hover/focus-visible feedback: the card border turns #1723CC and the image scales to 1.03 over 200ms ease-out, with the caption unchanged so no information depends on hover.",
+        "durationMs": 640,
+        "easing": "cubic-bezier(0.2, 0.7, 0.2, 1)",
+        "reducedMotion": "Cards and rule show their final state immediately. Hover keeps only the border color change; the image does not scale."
+      },
+      "componentNeeds": [],
+      "assetNeeds": [
+        "project_screenshot_zombie",
+        "project_screenshot_steelsilk",
+        "project_screenshot_slimyfiles",
+        "project_screenshot_playfab",
+        "project_screenshot_photondash",
+        "project_screenshot_gunsmoke",
+        "project_screenshot_castlebound"
+      ],
+      "transformation": {
+        "compact": "Under 640px: label above heading (as in the avoora mobile reference), the rule, then all seven cards in a single column at aspect 1.45:1 in the same order. The caption bar sits directly below the screenshot as an attached #0E0F15 block with the same 12px outer radius, instead of overlaying the image, because three lines of metadata would cover too much of a 330px-wide screenshot. Order inside: index + title, status line, then description and 'Read more →'. No text is removed.",
+        "medium": "640-1023px: card 01 stays full width at 16:9 with an overlaid caption. Cards 02-07 sit in 2 columns at 4:3 with the attached caption below each image, so titles and descriptions fit.",
+        "expanded": "1024px and up: the reference geometry: card 01 full width at 2.1:1 with a single-row overlaid caption, then 3 rows of 2 cards at 16:10 with two-row overlaid captions. At 4K, caption type scales with root rem and screenshots are served at their native resolution with sizes hints."
+      }
+    },
+    {
+      "id": "contact",
+      "layoutFamily": "cta",
+      "layoutCases": [
+        "obvia-12-contact"
+      ],
+      "referenceDirectionId": "obvia-12-contact",
+      "purpose": "Let a visitor who has seen the work send Marco a message using the existing form, or reach him through his GitHub, LinkedIn or itch.io.",
+      "userQuestion": "How do I get in touch with Marco?",
+      "stage": "act",
+      "dependencies": [
+        "projects"
+      ],
+      "evidence": [
+        "index.html contact form (Email, Subject, Message, submit)",
+        "Nav social buttons: GitHub, LinkedIn, Itch"
+      ],
+      "copy": {
+        "eyebrow": "//03 Get in touch",
+        "heading": "CONTACT ME",
+        "body": [
+          "Email",
+          "Subject",
+          "Message",
+          "Or find me on",
+          "GitHub",
+          "LinkedIn",
+          "itch.io"
+        ],
+        "callsToAction": [
+          {
+            "label": "Send message",
+            "target": "existing form submit handled by main.js"
+          }
+        ]
+      },
+      "layout": "Composition map from obvia-12-contact (desktop reference 1787x880; mobile 1190x1322). The reference is a full-bleed saturated surface; the brand reserves blue fills for actions, so the section becomes the page's one full-bleed surface step: #0E0F15 background with a 1px #414249 top border and no canvas behind it (the canvas is hidden behind this band via a solid background). The full-bleed band with a contrasting surface stays. Desktop vertical map: label at 17% height (reference '● OPEN FOR NEW COLLABORATIONS'): a 6px #6A72E6 dot plus '//03 Get in touch' in Poppins 500 uppercase 0.8125rem with +0.1em tracking. Heading band at 30-50%: 'CONTACT ME' in Poppins 700 uppercase, clamp(3rem, 8vw, 7rem), line-height 0.95, one line spanning about 70% of the container (the reference spans 94%; it is held smaller to respect the brand's no-monumental-type rule). A full-width 1px #84868E rule at 59% scales in from the left. Bottom row at 64-80%: left cols 1-7 (where the reference's button sits) hold the form. Labels are Poppins 500 uppercase 0.75rem. Email (type email, autocomplete email) and Subject sit side by side; Message (textarea, 6 rows) spans the full width under them. Then the primary 'Send message' button: #1723CC fill, 6px radius, 52px tall, the reference's black rectangle button rendered in brand blue. Inputs use a #13141B fill, 1px #414249 border, 6px radius, 48px min height and a 2px #6A72E6 focus outline at 3px offset. Right cols 9-12, right-aligned (where the reference's email + 'Expect a reply' note sits): 'Or find me on' in Poppins 500 uppercase 0.75rem textMuted, then three underlined text links stacked, 'GitHub', 'LinkedIn', 'itch.io', in Poppins 600 1.25rem (the reference's underlined email link style), using the same URLs as the nav buttons. Mobile map (1190x1322 reference): label 15%, heading 27-37% (one line, wraps to 2 under 400px), rule 43%, form 50-85% (single column), 'Or find me on' links 88-98% left-aligned.",
+      "motion": {
+        "purpose": "explanation",
+        "trigger": "scroll_enter",
+        "behavior": "IntersectionObserver (threshold 0, rootMargin '0px 0px 10% 0px', unobserve once) on the heading group, then separately on the form group. Heading group: the label and heading rise 16px and fade in over 560ms; the rule then scales on the X axis 0 to 1 from the left over 600ms, starting 80ms later. Form group: fields, button and side links fade up 12px with a 70ms stagger (capped at 240ms). Input focus: border-color to #1723CC over 160ms. Button hover: background #1723CC to #380BBF and translateY(-1px), with press returning to 0, over 160ms.",
+        "durationMs": 600,
+        "easing": "cubic-bezier(0.2, 0.7, 0.2, 1)",
+        "reducedMotion": "Heading, rule, form and links render in their final state. Focus and hover keep color changes only, with no translate."
+      },
+      "componentNeeds": [],
+      "assetNeeds": [],
+      "transformation": {
+        "compact": "Under 640px: label, heading (wraps to 2 lines if needed), rule, then a single-column form (Email, Subject, Message, full-width 'Send message' button), then 'Or find me on' with the three links stacked and left-aligned, matching the obvia mobile order. Inputs are at least 48px tall and 16px font size to avoid iOS zoom.",
+        "medium": "640-1023px: the heading is on one line. The form takes the full width with Email and Subject side by side, and the social links sit as a row under the button.",
+        "expanded": "1024px and up: the reference geometry, with the form in cols 1-7 and the right-aligned links in cols 9-12 sharing the row under the full-width rule."
+      }
+    },
+    {
+      "id": "footer",
+      "layoutFamily": "footer",
+      "layoutCases": [
+        "stodio-12-footer"
+      ],
+      "referenceDirectionId": "stodio-12-footer",
+      "purpose": "Close the page with the name, the same navigation and social links, and a way back to the top, without adding new content.",
+      "userQuestion": "Where else can I go from here?",
+      "stage": "continue",
+      "dependencies": [
+        "contact"
+      ],
+      "evidence": [
+        "Existing nav links (Home, About Me, Projects, Contact, Resume)",
+        "Existing social links (GitHub, LinkedIn, Itch)"
+      ],
+      "copy": {
+        "heading": "Marco Piamonte",
+        "body": [
+          "Gameplay Programmer",
+          "© 2026 Marco Piamonte"
+        ],
+        "callsToAction": [
+          {
+            "label": "Back to top",
+            "target": "#hero"
+          }
+        ]
+      },
+      "layout": "Composition map from stodio-12-footer (desktop reference 1681x936; mobile 825x1905). A rounded panel inset by the container gutter (reference panel 1.5%-98.5% width, 10%-89% height), #13141B surfaceAlt fill, 1px #414249 border, 20px radius, with internal padding clamp(32px, 4vw, 64px). Top row (reference 17-50% height): left cols 1-6 hold the heading 'Marco Piamonte' (Poppins 600 clamp(1.75rem, 3vw, 2.75rem), the reference's 'Notes from the Morrow studio' slot), the role line 'Gameplay Programmer' in textMuted (in place of the reference's email field, since no newsletter exists), and a row of three 44px social pills (6px radius, #0E0F15 fill, existing icons). Right cols 8-12 hold one link column with a 1px left divider (the reference has three; we have five links, so one column): Home, About Me, Projects, Contact, Resume in Nunito 600 1.125rem with 12px row gap. The reference's monumental wordmark band (55-75%) is omitted per brand restraint, recorded as a deviation; the panel is shorter as a result. Bottom row: a full-width 1px #414249 rule, then '© 2026 Marco Piamonte' on the left and a 'Back to top' link on the right, both Nunito 400 0.9375rem. Mobile map: heading, role line, social pills in a row, the link column with left divider, rule, then copyright and 'Back to top' centered (as in the stodio mobile reference).",
+      "motion": {
+        "purpose": "none",
+        "trigger": "none",
+        "behavior": "Static. Only link and pill hover/focus feedback runs: color change and underline scaleX over 160-180ms ease-out.",
+        "durationMs": 0,
+        "easing": "linear",
+        "reducedMotion": "Unchanged; there is no entrance motion to remove."
+      },
+      "componentNeeds": [],
+      "assetNeeds": [
+        "social_icon_github",
+        "social_icon_linkedin",
+        "social_icon_itch"
+      ],
+      "transformation": {
+        "compact": "Under 640px: single column in the stodio mobile order: heading, role, social pills, link column, rule, then centered copyright and 'Back to top'.",
+        "medium": "640-1023px: heading/role/pills on the left and the link column on the right, kept side by side.",
+        "expanded": "1024px and up: the reference two-zone top row and the bottom rule row inside the rounded panel, capped at container width at 4K."
+      }
+    }
+  ],
+  "responsive": [
+    "Breakpoints: compact < 640px, medium 640-1023px (nav collapses below 900px), expanded >= 1024px, 4K handling >= 2000px through root font-size clamp so all rem-based sizes, including the container, scale together",
+    "Fluid type through clamp() only; no viewport-unit-only font sizes, so zoom up to 200% stays usable",
+    "Canvas: devicePixelRatio is capped at 1.5, cell resolution adapts from 12 to 32 based on measured FPS, and the cell count is capped on very large viewports. Mobile/touch and prefers-reduced-motion get one static frame. The render loop pauses when the hero leaves the viewport (IntersectionObserver) and when document.hidden is true. showFPS is false",
+    "Images carry explicit width/height and loading='lazy' below the fold, decoding='async' and a sizes attribute; only the first project screenshot loads eagerly",
+    "Fonts: Poppins 500/600/700 and Nunito 400/600 load with font-display: swap, and the two most used weights are preloaded",
+    "Minimum hit target 44x44px on compact for nav toggle, social buttons, inputs and project links",
+    "Project detail pages and resume.html reuse the same nav, footer, tokens, canvas backdrop (static frame behind content, dimmed) and media frame treatment; their own copy is unchanged"
+  ],
+  "interactions": [
+    "Hamburger toggle opens and closes the compact nav sheet (aria-expanded, Escape to close, focus returns to toggle, body scroll stays native)",
+    "Active section highlighting in the nav via IntersectionObserver on section headings",
+    "Project cards are full-card links with visible 'Read more →' labels and border/zoom feedback on hover and focus-visible",
+    "Contact form keeps its existing main.js behavior; native validation for the email type and focus outlines on all fields",
+    "Social buttons and links open their existing GitHub, LinkedIn and itch.io URLs in a new tab with rel='noopener'",
+    "Smooth anchor scrolling only when prefers-reduced-motion is not set; otherwise jump directly",
+    "Reduced-motion change listener: on change, cancel owned animations, disconnect observers, show all elements and switch the canvas to a static frame"
+  ],
+  "acceptanceCriteria": [
+    "All existing copy is present unchanged: hero name, role and location; full bio; all seven project titles, status/date/role lines and one-line descriptions in their existing order; contact form fields",
+    "Each section visibly matches its reference macro geometry at desktop and mobile: sidrano hero meta row, dotted-rule headline band and base line; meridian two-column about with chamfered photo; avoora full-width lead card with overlaid caption bar, then a 2-column grid; obvia label, large heading, full rule and bottom action row; stodio rounded footer panel",
+    "Only Poppins and Nunito load, and document.fonts.check passes for Poppins 700 and Nunito 400",
+    "Blue #1723CC appears on the primary buttons, focus/selected states and the project caption index treatment, and nowhere as a glow; no backdrop-filter or box-shadow glow remains",
+    "Canvas is static on mobile and under reduced motion, pauses offscreen and in hidden tabs, caps DPR at 1.5, and shows no FPS counter",
+    "Browser evidence: the hero entrance plays on load; the about, projects and contact reveals play once on scroll; rapidly scrolling down and up twice leaves every visited section visible with no replay; reloading at mid-page shows already-visible content without flicker; resizing does not reset reveals; toggling reduced motion during playback shows final states immediately",
+    "No horizontal overflow at 320px, 768px, 1440px or 3840px widths; the content column scales up at 3840px instead of staying 1240 CSS px wide",
+    "Lighthouse-style checks: images have alt text (tool names, 'Marco Piamonte', project titles); color contrast passes AA for body and label text on #000 and #0E0F15; all controls reachable by keyboard with visible focus",
+    "Project detail pages and resume.html share the same nav, footer and tokens, with their content unchanged"
+  ]
+}
